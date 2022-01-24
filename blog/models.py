@@ -6,7 +6,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 
 
 class Post(models.Model):
-    '''model for posts'''
+    '''model for blog posts'''
 
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
@@ -33,7 +33,7 @@ class Comment(models.Model):
     '''model for comments'''
 
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
